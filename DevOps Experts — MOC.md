@@ -57,12 +57,13 @@ Follow the arrows — each builds on the last. Concepts first, then the capstone
 | 🏆 | [[SkyWatch Capstone]] | The full end-to-end project | 🎖️ SkyWatch Commander 🛰️ |
 
 > [!warning] 🔢 Numbering decoder — read once, save confusion forever
-> Note numbers follow the **course repo folders** (`class1/`, `class3/`…), **not** the calendar sessions:
-> - **Calendar-session 1 was the DevOps intro** (concepts, no repo folder) → covered by [[DevOps Foundations]].
-> - So **Docker basics was taught in session 2**, even though its repo folder — and its note — say `class1`. Everything after shifts similarly.
-> - Classes 04, 07, 09, 10 have no hands-on materials in the repo, so they have no notes.
+> **Three numbering systems exist and they disagree**, so note numbers (which follow the **course repo folders**) tell you nothing about the calendar:
+> - **Repo folders** (`class1/` = Docker basics, `class3/` = Git …) — how the files are organized. Our notes follow these.
+> - **The teacher's drive folders** (`class 2` = Docker, `class 3` = Git) — shifted differently.
+> - **His deck titles = the real calendar**: the "class 3" Git deck's own title slide says **Class 6**, and that's the actual session count (session 1 was the intro → [[DevOps Foundations]]; several sessions per topic happen).
+> - Repo folders 04, 07, 09, 10 have no hands-on materials, so they have no notes.
 >
-> **Rule of thumb: navigate by *topic*, never by number.** Every class note repeats this in a small collapsed callout under its title.
+> **Rule of thumb: navigate by *topic*, never by number.** Every class note repeats this in a small collapsed callout under its title. When in doubt about "which class are we on," check the latest deck's title slide.
 
 ---
 

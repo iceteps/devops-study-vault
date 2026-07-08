@@ -8,7 +8,7 @@ difficulty: intermediate
 # 📜 Class 11 — Ansible
 
 > [!info]- 🔢 Which class is this, really?
-> The number in this note's title follows the **course repo folder** `class11/` — **not** the calendar session. The real session numbering is shifted: calendar-session 1 was the DevOps intro (see [[DevOps Foundations]]), so e.g. Docker basics was *taught* in session 2 even though its repo folder is `class1`. When in doubt, navigate by **topic** via [[DevOps Experts — MOC]], not by number.
+> The number in this note's title follows the **course repo folder** `class11/` — **not** the calendar session. The numbering is genuinely chaotic — **three systems disagree**: the repo folders, the teacher's drive folders, and his deck titles (which reflect the real calendar). Case in point: the Git material lives in repo folder `class3/` and drive folder `class 3`, but its own deck title says **Class 6** — the actual session count. Session 1 was the DevOps intro (see [[DevOps Foundations]]). Bottom line: navigate by **topic** via [[DevOps Experts — MOC]], never by number.
 
 
 > [!abstract] TL;DR

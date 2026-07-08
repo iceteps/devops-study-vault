@@ -8,7 +8,7 @@ difficulty: beginner
 # 🌿 Class 03 — Git
 
 > [!info]- 🔢 Which class is this, really?
-> The number in this note's title follows the **course repo folder** `class3/` — **not** the calendar session. The real session numbering is shifted: calendar-session 1 was the DevOps intro (see [[DevOps Foundations]]), so e.g. Docker basics was *taught* in session 2 even though its repo folder is `class1`. When in doubt, navigate by **topic** via [[DevOps Experts — MOC]], not by number.
+> The number in this note's title follows the **course repo folder** `class3/` — **not** the calendar session. The numbering is genuinely chaotic — **three systems disagree**: the repo folders, the teacher's drive folders, and his deck titles (which reflect the real calendar). Case in point: the Git material lives in repo folder `class3/` and drive folder `class 3`, but its own deck title says **Class 6** — the actual session count. Session 1 was the DevOps intro (see [[DevOps Foundations]]). Bottom line: navigate by **topic** via [[DevOps Experts — MOC]], never by number.
 
 
 > [!abstract] TL;DR
@@ -175,7 +175,7 @@ Follow along in a real terminal. This mirrors Yariv's class session.
 > 3. **[[Terminology#SHA (commit hash)|SHA]] & [[Terminology#HEAD|HEAD]]:** every commit is a node with a unique SHA; HEAD points at where you are. `git show <sha>` inspects any node; `git log --graph --oneline --all` draws the whole tree — the exact command the assignment asks you to submit.
 > 4. **The deck's table is monorepo vs MULTI-repo** (not monolith!): monorepo = atomic cross-project changes + unified CI/CD but needs tooling to scale; multi-repo = team autonomy + independent releases but hard cross-repo coordination.
 >
-> 😄 Fun fact for the numbering saga: this deck's own title slide says **"Class 6"**. Navigate by topic.
+> 📅 **The deck's title slide says "Class 6" — and that's the real calendar session** (confirmed in class): we're at session 6 right now. The `class3/` folder names are just how the files are organized. One more reason to navigate by topic, never by number.
 >
 > 📄 Full deck: [class3-git.pptx](uploads/class-03-git/class3-git.pptx) *(in this repo's `uploads/`)*
 

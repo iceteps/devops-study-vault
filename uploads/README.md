@@ -1,7 +1,9 @@
 # 📤 uploads — the teacher's materials, class by class
 
 Everything Yariv uploads (slide decks, assignment docs) lands here, one folder per
-**calendar session**, named by the topic so the numbering confusion can't bite:
+drive upload, **named to mirror his drive-folder numbering + the topic**. Heads-up:
+his numbers drift from the real calendar (the "class 3" Git deck's title slide says
+**Class 6**) — the **topic suffix is the real key**, the number is just a label:
 
 ```
 uploads/

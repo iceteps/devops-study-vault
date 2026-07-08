@@ -22,7 +22,7 @@ TL;DR → 🎯 Learning goals → 🧩 Big idea (analogy + vertical diagram, cod
 
 ## The weekly ritual (after each class)
 
-1. `uploads/class-NN-<topic>/` ← the teacher's new files, renamed clean (lowercase-dashes, no emoji/spaces). NN = **calendar** session number; the topic suffix disambiguates vs note numbering.
+1. `uploads/class-NN-<topic>/` ← the teacher's new files, renamed clean (lowercase-dashes, no emoji/spaces). NN mirrors **his drive-folder numbering** (which itself drifts from the real calendar — his deck titles are the calendar truth); the **topic suffix is the reliable key**.
 2. Mine them (pptx/docx = zip + XML regex, stdlib only) into the class note's `📬 The REAL assignment` and `🖥️ From the class deck` sections.
 3. Student solution work goes under `homework/class-NN-<topic>/` — mind the sharing-etiquette note there (public repo; no solutions before deadlines).
 4. Commit + push (this repo has no CI; the review is human).
