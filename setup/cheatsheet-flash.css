@@ -1,0 +1,61 @@
+/* ============================================================
+   DevOps Experts — cheat-sheet "peek deterrent"
+   Styles the custom  > [!cheatsheet]-  callout and FLASHES it
+   red→amber when you expand it, to discourage peeking.
+   Enable via Settings → Appearance → CSS snippets.
+   ============================================================ */
+
+/* Custom callout look: amber, lock icon */
+.callout[data-callout="cheatsheet"] {
+  --callout-color: 220, 140, 20;              /* amber RGB */
+  --callout-icon: lucide-lock;
+  border: 1px solid rgba(220, 140, 20, 0.55);
+}
+
+/* The flash: plays whenever the callout is NOT collapsed.
+   Expanding removes the .is-collapsed class → animation retriggers. */
+.callout[data-callout="cheatsheet"]:not(.is-collapsed) {
+  animation: cheatsheet-flash 1s ease-in-out;
+}
+
+@keyframes cheatsheet-flash {
+  0% {
+    background: rgba(230, 60, 60, 0.55);
+    box-shadow: 0 0 0 4px rgba(230, 60, 60, 0.65);
+  }
+  35% {
+    background: rgba(235, 165, 40, 0.40);
+    box-shadow: 0 0 0 2px rgba(235, 165, 40, 0.45);
+  }
+  100% {
+    background: transparent;
+    box-shadow: none;
+  }
+}
+
+/* Make the collapsed title look clickable/tempting-but-forbidden */
+.callout[data-callout="cheatsheet"] .callout-title {
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+/* ============================================================
+   Flashcards — the collapsed "raw review deck" callout.
+   Muted styling so the Term::Definition lines (which the
+   Spaced Repetition plugin reads) don't distract from the
+   pretty click-to-flip [!question] cards above it.
+   ============================================================ */
+.callout[data-callout="srdeck"] {
+  --callout-color: 130, 130, 140;             /* muted grey */
+  --callout-icon: lucide-refresh-cw;
+  opacity: 0.75;
+  font-size: 0.9em;
+}
+.callout[data-callout="srdeck"] .callout-content {
+  font-family: var(--font-monospace);
+}
+
+/* Give the click-to-flip flashcard/quiz cards a subtle "card" feel */
+.callout[data-callout="question"] {
+  border-radius: 8px;
+}

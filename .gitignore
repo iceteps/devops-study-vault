@@ -1,0 +1,6 @@
+# Obsidian workspace/config (personal — each user has their own)
+.obsidian/
+.trash/
+
+# Spaced Repetition plugin's scheduling data folder (personal review history)
+Spaced Repetition/
