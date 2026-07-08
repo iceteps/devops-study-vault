@@ -118,11 +118,11 @@ Everything cross-links through [[Terminology]]. Open **Graph view** (`Ctrl+G`) t
   git clone https://github.com/iceteps/shell-quest && cd shell-quest
   python quest.py
   ```
-- **⚡ Terminal quiz game** — a fast self-test across every topic. In the course repo:
+- **⚡ Quick Quiz** — a fast self-test across every topic, now living **inside the
+  Shell Quest repo** (one clone = both games):
   ```bash
-  cd homework/quiz-game
-  python quiz.py                 # 12 random questions
-  python quiz.py --topic git     # one topic
+  python quiz/quiz.py                 # 12 random questions
+  python quiz/quiz.py --topic git     # one topic
   ```
 - **🔎 "Learn to fish"** — every class note has a section with official-docs links and how to
   *discover* commands yourself (`--help`, `kubectl explain`, `ansible-doc`, …) so studying
