@@ -142,6 +142,15 @@ Hello! I am a Flask application
 - [ ] **(20 XP) Cache experiment:** build the Flask image, then edit **`app.py`** and rebuild — watch which steps say `CACHED`. Then edit **`requirements.txt`** and rebuild. **Done when:** you can explain why editing code kept `pip install` cached but editing requirements did not.
 - [ ] **(20 XP) slim vs full:** build one image `FROM python:3` and one `FROM python:3-slim`, run `docker images`, compare the `SIZE` column. **Done when:** you can state the roughly ~5–7× size difference.
 
+## 🖥️ From the class deck *(addition — mined from `Class2.Docker.pptx`)*
+
+> [!info] Three things the slides stress that are easy to miss
+> 1. **Containers vs VMs — the kernel is the difference.** A VM runs on a [[Terminology#Hypervisor]] and brings its *own* full OS; containers all share the **host kernel**, which is why a container starts in ~1s and weighs MBs while a VM takes minutes and GBs. Interview-favorite question.
+> 2. **Don't forget the dot.** `docker build -t timestamp:1.0 .` — the trailing `.` is the **build context** (which files Docker may COPY). Forgetting it is the #1 first-build error.
+> 3. **[[Terminology#Nginx]] is not "just a demo image"** — it's a reverse proxy / load balancer / cache serving ~a quarter of the busiest sites. The deck's exercise (`docker run --name docker-nginx -p 80:80 -d nginx`) is the same port-mapping muscle as the Flask lab.
+>
+> 📄 Full deck: [class2-docker.pptx](uploads/class-02-docker/class2-docker.pptx) *(in this repo's `uploads/`)*
+
 ## 📬 The REAL assignment (from Yariv's drive)
 
 > [!important] 🐳 Docker Basics — Assignment 1: *From Application to Public Docker Hub Image*

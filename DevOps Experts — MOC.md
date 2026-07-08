@@ -66,6 +66,16 @@ Follow the arrows — each builds on the last. Concepts first, then the capstone
 
 ---
 
+## 📤 Uploads & homework
+
+- **`uploads/class-NN-<topic>/`** — the teacher's materials (pptx decks, assignment docs), added after each class. What's been mined from them already lives inside the class notes as **📬 The REAL assignment** and **🖥️ From the class deck** sections.
+- **`homework/class-NN-<topic>/`** — your solution work per assignment (see the sharing-etiquette note in `homework/README.md`).
+- **Official course repo (Yariv's):** https://github.com/yfreifeld/devops-course — the upstream source of the `classN/` lab files.
+
+> The weekly ritual after each class is documented in `uploads/README.md`: drop the new files in, distill them into the class note, commit + push.
+
+---
+
 ## 🏆 Badge tracker
 
 Tick a badge when you clear that note's `> [!success]` conditions:

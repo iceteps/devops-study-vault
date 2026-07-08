@@ -162,6 +162,23 @@ Follow along in a real terminal. This mirrors Yariv's class session.
 
 ---
 
+## 🖥️ From the class deck *(addition — mined from `Git.pptx`)*
+
+> [!info] What the slides add beyond the live session
+> 1. **First-time setup — do this ONCE before any commit** (the deck's exercise starts with it):
+>    ```bash
+>    git config --global user.name  "Your Name"
+>    git config --global user.email "you@example.com"
+>    ```
+>    Without it, your commits are attributed to nobody (and GitHub won't link them to you).
+> 2. **Why Git exists:** born in 2005 when the Linux kernel's BitKeeper deal collapsed — goals: speed, simple design, fully **distributed** (vs centralized VCS like SVN).
+> 3. **[[Terminology#SHA (commit hash)|SHA]] & [[Terminology#HEAD|HEAD]]:** every commit is a node with a unique SHA; HEAD points at where you are. `git show <sha>` inspects any node; `git log --graph --oneline --all` draws the whole tree — the exact command the assignment asks you to submit.
+> 4. **The deck's table is monorepo vs MULTI-repo** (not monolith!): monorepo = atomic cross-project changes + unified CI/CD but needs tooling to scale; multi-repo = team autonomy + independent releases but hard cross-repo coordination.
+>
+> 😄 Fun fact for the numbering saga: this deck's own title slide says **"Class 6"**. Navigate by topic.
+>
+> 📄 Full deck: [class3-git.pptx](uploads/class-03-git/class3-git.pptx) *(in this repo's `uploads/`)*
+
 ## 📬 The REAL assignment (from Yariv's drive)
 
 > [!important] 🧪 Git Fundamentals — Branching, Merging & Conflicts

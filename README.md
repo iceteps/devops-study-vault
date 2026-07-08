@@ -18,6 +18,11 @@ self-quizzes, spaced-repetition flashcards, and the capstone project decoded.
 | `DevOps Foundations` | the "why": Agile, CI/CD, deployment strategies |
 | `Class 01–14` notes | Docker, Git, Kubernetes, Helm, GitOps, Ansible, Terraform, RabbitMQ |
 | `SkyWatch Capstone` | the final project as a guided build roadmap |
+| `uploads/` | the teacher's original materials per class (decks + assignment docs) |
+| `homework/` | your per-assignment solution space (see its README for sharing etiquette) |
+
+Related repos: the official course labs live at
+[yfreifeld/devops-course](https://github.com/yfreifeld/devops-course) (the teacher's repo).
 
 Every class note follows the same self-learning flow:
 **TL;DR → analogy → guided walkthrough → drills (XP) → learn-to-fish (find commands yourself)

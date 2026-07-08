@@ -48,6 +48,15 @@ A **bind mount** maps a host folder into the container instead.
 A virtual network letting containers talk to each other. On a **user-defined** network,
 containers reach each other **by name** (e.g. `ping rabbitmq`). See [[Class 02 - Docker Networking and Images]].
 
+### Hypervisor
+The software/firmware layer that **virtual machines** run on top of; it carves the host's
+RAM/CPU into full VMs. Containers skip it — they share the host **kernel**, which is why
+they're lighter and faster to start than VMs.
+
+### Nginx
+A wildly popular open-source **web server / reverse proxy / load balancer / HTTP cache**.
+The course's favorite demo container (`nginx:alpine`) and what Ansible deploys in [[Class 14 - Ansible Lab]].
+
 ### Port mapping
 `-p 8080:5000` exposes container port 5000 on host port 8080 so your browser can reach it.
 Left = host, right = container.
@@ -92,6 +101,18 @@ One large codebase/app where everything is deployed together. Simple at first, h
 ### Monorepo
 **One repository** holding many projects/services (still deployable separately). Easier shared
 tooling and atomic cross-project changes. (Note from your notes: *mono ≠ monolith* — a monorepo can hold microservices.)
+
+### Multi-repo
+The opposite of a [[Terminology#Monorepo]]: **one repo per project/service**. Wins team autonomy
+and independent releases; costs cross-repo coordination. (Yariv's deck compares them head-to-head.)
+
+### SHA (commit hash)
+The unique fingerprint identifying every commit (e.g. `a1b2c3d`). Git commands accept it to
+point at any node in history (`git show <sha>`, `git checkout <sha>`).
+
+### HEAD
+Git's pointer to **where you are right now** — normally the tip of your current branch.
+"Detached HEAD" = you checked out a commit directly instead of a branch.
 
 ---
 
