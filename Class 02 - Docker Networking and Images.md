@@ -142,6 +142,20 @@ Hello! I am a Flask application
 - [ ] **(20 XP) Cache experiment:** build the Flask image, then edit **`app.py`** and rebuild — watch which steps say `CACHED`. Then edit **`requirements.txt`** and rebuild. **Done when:** you can explain why editing code kept `pip install` cached but editing requirements did not.
 - [ ] **(20 XP) slim vs full:** build one image `FROM python:3` and one `FROM python:3-slim`, run `docker images`, compare the `SIZE` column. **Done when:** you can state the roughly ~5–7× size difference.
 
+## 📬 The REAL assignment (from Yariv's drive)
+
+> [!important] 🐳 Docker Basics — Assignment 1: *From Application to Public Docker Hub Image*
+> The actual graded homework. You get a small Python web server (`app.py`, port 8080, stdlib only) and must — **without copying a Dockerfile from the internet**:
+> 1. **Write your own Dockerfile** — base image, workdir, copy `app.py`, expose the port, start command. *You must understand every instruction.*
+> 2. **Build & tag** the image with a meaningful name, verify it exists locally.
+> 3. **Create a Docker Hub account** — username = your permanent public namespace, lowercase.
+> 4. **Create an access token** (Account Settings → Security → New Access Token, Read & Write) and `docker login` with it — **never your account password** in the terminal.
+> 5. **Create a public repo** and push: re-tag as `<dockerhub-username>/<repo>` first. Remember: *public = anyone can pull; pushing always requires login.*
+>
+> Allowed sources: official Docker docs + `docker --help` only — which is exactly what the **Learn to fish** section below trains.
+>
+> 🗡️ **Practice it risk-free first:** mission 4 "Ship It ⚓" in [Shell Quest](https://github.com/iceteps/shell-quest) simulates this exact flow — including the classic `denied: requested access` errors.
+
 ## 🧗 Extra credit — beyond class *(addition)*
 
 > [!example] 🆕 These drills are an **addition** — not covered in the class materials

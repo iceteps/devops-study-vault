@@ -162,6 +162,22 @@ Follow along in a real terminal. This mirrors Yariv's class session.
 
 ---
 
+## 📬 The REAL assignment (from Yariv's drive)
+
+> [!important] 🧪 Git Fundamentals — Branching, Merging & Conflicts
+> The actual graded homework, step by step:
+> 1. **Create** a public GitHub repo `git-python-practice` (no README) and **clone** it.
+> 2. **Commit** an `app.py` with a `greet(name)` function → stage → commit → push to `main`.
+> 3. **Branch:** create `feature/add-time`, switch to it, make the greeting include the current time (`datetime`), commit, push the branch.
+> 4. **Merge without conflict:** back on `main`, merge the feature in, push.
+> 5. **Manufacture a conflict:** change `greet()` *differently* on `main` AND on the feature branch (two commits).
+> 6. **Trigger + resolve:** merge → conflict in `app.py` → open it, combine both ideas, **remove every `<<<<<<< ======= >>>>>>>` marker**, stage, commit, push.
+> 7. **Submit:** repo URL + output of `git log --oneline --graph` + a working final `app.py`.
+>
+> **Bonus part:** history spelunking (`git log --oneline`, `--graph --all`, `git show <hash>`) and diff practice (`git diff`, `--staged`, `git restore`, `git restore --staged`) — running `git status` before and after every step.
+>
+> 🗡️ **Practice it risk-free first:** missions 5–7 in [Shell Quest](https://github.com/iceteps/shell-quest) are this exact assignment — mission 7 is the conflict finale.
+
 ## 🧗 Extra credit — beyond class *(addition)*
 
 > [!example] 🆕 These drills are an **addition** — not covered in the class materials

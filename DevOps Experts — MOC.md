@@ -101,6 +101,13 @@ Everything cross-links through [[Terminology]]. Open **Graph view** (`Ctrl+G`) t
 
 ## 🎮 Extras
 
+- **🗡️ [Shell Quest](https://github.com/iceteps/shell-quest)** — learn by *typing the real commands* in a
+  simulated terminal. 7 missions with XP and levels; missions 4 and 7 mirror the course's
+  **actual graded assignments** (Docker Hub push · merge-conflict resolution).
+  ```bash
+  git clone https://github.com/iceteps/shell-quest && cd shell-quest
+  python quest.py
+  ```
 - **⚡ Terminal quiz game** — a fast self-test across every topic. In the course repo:
   ```bash
   cd homework/quiz-game
