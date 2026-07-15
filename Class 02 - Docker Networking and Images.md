@@ -175,7 +175,7 @@ Hello! I am a Flask application
 > 🗡️ **Practice it risk-free first:** mission 4 "Ship It ⚓" in [Shell Quest](https://github.com/iceteps/shell-quest) simulates this exact flow — including the classic `denied: requested access` errors.
 
 > [!success] ✅ Status — submitted 2026-07-15
-> Local project: `C:\Users\icete\github\Devops\docker-basics-assignment1` (stdlib-only `app.py`, hand-written `Dockerfile` — separate from the unrelated Flask catch-up practice in `devops-course/homework/class2`). Built, ran, verified on port 8080, pushed as [`iceteps/hello-docker-app`](https://hub.docker.com/r/iceteps/hello-docker-app) with tags `1.0` and `latest` (bonus). Confirmed public via the Docker Hub API.
+> Local project: `docker-basics-assignment1` (kept outside this vault; stdlib-only `app.py`, hand-written `Dockerfile` — separate from the unrelated Flask catch-up practice in `devops-course/homework/class2`). Built, ran, verified on port 8080, pushed as [`iceteps/hello-docker-app`](https://hub.docker.com/r/iceteps/hello-docker-app) with tags `1.0` and `latest` (bonus). Confirmed public via the Docker Hub API.
 
 ## 🔎 Learn to fish — find it yourself (don't just copy)
 

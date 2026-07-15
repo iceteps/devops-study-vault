@@ -7,6 +7,11 @@ aliases: [Mastery Path, Learning Path, Become a Master, Skill Tree]
 
 > [!abstract] What this is
 > Your **skill tree** for the whole course. Every topic has the same four-rank ladder, and every rank has **concrete, checkable criteria** wired to things that already exist: this vault's drills and boss challenges, [Shell Quest](https://github.com/iceteps/shell-quest) missions, the quiz, and the REAL graded assignments. No vibes — you either meet the bar or you don't yet. Tick the boxes **in this note**; it's your dashboard.
+>
+> 🗡️ **Live game progress:** [[🗡️ Shell Quest Progress]] — auto-written by the game every time you finish a mission (link yours once: `python quest.py --link-vault "<vault>/🗡️ Shell Quest Progress.md"`).
+
+> [!note]- 🍴 Forked this vault? Make the path YOURS (30 seconds)
+> The checkboxes, ✅s, and "📍 you are here" in this note track the **original author's** journey. To reset: replace every `✅`/`[x]` with `[ ]`, clear the dashboard table to ⬜, delete the two "submitted" links, and move 📍 to your current topic. The ladders, criteria, and loop are yours as-is — only the progress state is personal. (Game progress resets itself: `progress.json` is gitignored, so your clone starts at 0 XP automatically.)
 
 ---
 
@@ -57,7 +62,7 @@ aliases: [Mastery Path, Learning Path, Become a Master, Skill Tree]
 - [ ] 🥉 Note read end-to-end (incl. BOTH deck sections + both REAL-assignment callouts); all 29+ flashcards in rotation.
 - [ ] 🥈 Shell Quest missions **8, 9, 10** beaten (8 = the CLI assignment, 10 = the RBAC homework; `demo` first is fair).
 - [ ] 🥇 All 7 drills + the 3 extra-credit drills + boss challenge on a REAL minikube; `quiz.py --topic k8s` ≥80%; the `-n` namespace reflex is automatic.
-- [ ] 🏆 **Real assignment #1 (CLI):** execute + submit — scaffold is ready at `C:\Users\icete\github\Devops\kubernetes-basics-assignment\`. **Real assignment #2 (Core Resources & RBAC):** all 9 parts + written answers. Teach-it: the yes→no RBAC flip, and why deleting a Deployment-owned pod does nothing.
+- [ ] 🏆 **Real assignment #1 (CLI):** execute + submit — a local `kubernetes-basics-assignment` scaffold is ready (outside the vault). **Real assignment #2 (Core Resources & RBAC):** all 9 parts + written answers. Teach-it: the yes→no RBAC flip, and why deleting a Deployment-owned pod does nothing.
 
 ## ⎈ Helm — [[Class 06 - Helm]]
 

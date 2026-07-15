@@ -256,7 +256,7 @@ kubectl delete namespace dev   # nukes everything scoped inside it
 >
 > 🗡️ **Practice it risk-free first:** mission 8 "First Contact ☸️" in [Shell Quest](https://github.com/iceteps/shell-quest) IS this assignment — same four YAML files, same flow, same `minikube service` finale. Type `demo` inside the mission to watch it solved once, then do it yourself.
 >
-> 🛠️ **Local scaffold ready:** `C:\Users\icete\github\Devops\kubernetes-basics-assignment\` has the provided `k8s/` manifests (verbatim) + a checklist README — not yet executed/submitted.
+> 🛠️ **Local scaffold ready:** a `kubernetes-basics-assignment` project (kept outside this vault) has the provided `k8s/` manifests (verbatim) + a checklist README — not yet executed/submitted.
 
 ## 📬 The REAL assignment #2 — Core Resources & RBAC (drive "Class 5")
 

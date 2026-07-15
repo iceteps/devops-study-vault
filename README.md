@@ -5,8 +5,11 @@ one polished note per class, a master glossary, drills with XP, collapsible
 self-quizzes, spaced-repetition flashcards, and the capstone project decoded.
 
 > Companion game: **[🗡️ Shell Quest](https://github.com/iceteps/shell-quest)** —
-> practice the commands from these notes in a simulated terminal (the Docker
-> and Git missions mirror the course's real assignments).
+> practice the commands from these notes in a simulated terminal. **16 missions
+> covering every course topic** (four of them mirror the course's real graded
+> assignments, and mission 16 is the whole capstone in one run). Watch any
+> mission solved with `demo`, then beat it yourself — and link your vault so
+> your XP shows up here as a live note.
 
 ## What's inside
 
@@ -44,9 +47,19 @@ The cheat-sheet is last and collapsed *on purpose* — attempt the drills before
 
 ## Study loop (the short version)
 
-Read the big idea → do the walkthrough → earn the drill XP → take the quiz →
-review flashcards (Spaced Repetition plugin) → only then peek at the cheat-sheet.
-Collect all 12 badges. 🎖️
+Read the big idea → do the walkthrough → beat the topic's Shell Quest mission →
+earn the drill XP → take the quiz → review flashcards (Spaced Repetition plugin) →
+only then peek at the cheat-sheet. Collect all 12 badges. 🎖️
+
+**Then climb.** The **`🎓 Mastery Path`** note turns all of this into a per-topic
+rank ladder (Apprentice → Practitioner → Expert → Master) with concrete criteria —
+it's the note you open every day. Forking? It has a 30-second "make it yours" reset
+callout at the top.
+
+## License
+
+Notes and structure: [CC BY 4.0](LICENSE) — share and adapt with attribution.
+The teacher's original materials under `uploads/` remain his.
 
 ## Contributing
 

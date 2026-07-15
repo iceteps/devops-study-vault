@@ -12,6 +12,7 @@ New? Do the 5-minute [[00 - Start Here (Setup and Plugins)]] first so flashcards
 > 1. **Review cards** — `Ctrl+P → Spaced Repetition: Review flashcards` (5 min, keeps everything warm).
 > 2. **Open [[🎓 Mastery Path]]** — your rank dashboard. Pick the lowest open box on the topic you're climbing.
 > 3. **Do ONE thing** — a [Shell Quest](https://github.com/iceteps/shell-quest) mission (new topic? type `demo` inside it to watch it solved first), a drill block, or a real-assignment step.
+> 4. Game progress shows up live in [[🗡️ Shell Quest Progress]] — the game rewrites that note on every save.
 >
 > 📍 Current climb: **Kubernetes** — note updated with both REAL assignments; game missions 8–10 await; local scaffold ready.
 

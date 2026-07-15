@@ -111,6 +111,21 @@ note list, then build after I confirm.
 
 ---
 
+**2026-07-15 additions — fold these into the prompt when regenerating:**
+
+- **Mastery Path note**: a per-topic 4-rank ladder (Apprentice → Practitioner → Expert →
+  Master) whose criteria point at the vault's own drills, the game's missions, the quiz, and
+  the REAL assignments; plus a dashboard table and a daily/weekly loop. It becomes the
+  learner's home page; add a fork-reset callout so shared copies start clean.
+- **Game demo mode**: every mission's solution script doubles as a step-by-step replay
+  (`demo` → Enter advances → `takeover`); watching pays no XP.
+- **Teach lines**: one micro-lesson per objective, printed on completion + recapped at
+  mission end; a lint pass inside the selftest enforces parity.
+- **Vault↔game sync**: the game renders a live progress note into the learner's vault
+  (opt-in via a gitignored config file) — progress visible where they study.
+- **Full-course game coverage**: one mission per topic minimum + a final campaign mission
+  chaining every tool end-to-end as the capstone dress rehearsal.
+
 *Reference implementations of everything the prompt describes:*
 *[devops-study-vault](https://github.com/iceteps/devops-study-vault) (this vault) ·
 [shell-quest](https://github.com/iceteps/shell-quest) (the game).*
