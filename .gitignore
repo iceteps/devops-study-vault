@@ -4,3 +4,6 @@
 
 # Spaced Repetition plugin's scheduling data folder (personal review history)
 Spaced Repetition/
+
+# Local-only working docs (never committed — see plans/WORKFLOW_LOG.md)
+/plans/
