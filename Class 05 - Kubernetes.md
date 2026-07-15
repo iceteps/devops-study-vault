@@ -212,6 +212,36 @@ kubectl delete namespace dev   # nukes everything scoped inside it
 - [ ] **Rollout + rollback (30 XP)** — `kubectl set image deployment/app-deployment app=nginx:1.27 -n dev`, watch `kubectl rollout status`, then `kubectl rollout undo`. **Done when:** `kubectl rollout history` shows both revisions.
 - [ ] **requests vs limits (20 XP)** — add `resources.requests` and `resources.limits` to a pod; then set a limit lower than the app needs and watch it get OOMKilled (`kubectl describe pod`). **Done when:** you know which one the scheduler uses.
 
+## 🖥️ From the class deck *(addition — mined from `class4-kubernetes.pptx`)*
+
+> [!info] Four things the slides stress that this note's core-concepts section doesn't spell out
+> 1. **Everything talks through the API Server — nothing talks to etcd, the Scheduler, or Kubelet directly.** The Scheduler *watches* the API Server for unassigned Pods, the Controller Manager *fetches* desired state from it and *writes back* changes, and Kubelet *polls* it for Pod specs then reports status back. etcd is the API Server's private backend database — no other component touches it directly. One hub, everyone else spokes.
+> 2. **Master components vs Node components — the deck's own split.** *Master* (control plane): API Server, etcd, Scheduler, Controller Manager — make cluster-wide decisions, can run on any machine. *Node*: kubelet, kube-proxy, container runtime — run on **every** node, actually execute the workloads. This maps directly onto this note's [[#🏗️ Workloads (things that run your code)|Workloads]] vs the control plane you never touch.
+> 3. **Kubernetes isn't the only orchestrator** — the deck opens with **Docker Swarm** (native Docker clustering) and **Mesosphere Marathon** (long-running-app framework on Apache Mesos) as siblings, then explains why K8s won: environmental consistency (laptop == cloud), cloud/OS portability, and application-centric management over raw VM abstraction.
+> 4. **`kubectl` has two working styles**, and the deck names both explicitly: **Declarative** (write YAML, `kubectl apply -f`) — everything this note's walkthrough uses — vs **Ad Hoc** (one-off imperative commands like `kubectl run`, `kubectl create deployment ... --image=...`). The deck's own demo: `kubectl create deployment hello-node --image=...` → `kubectl scale --replicas=3` → `kubectl expose --type=ClusterIP` is the Ad Hoc equivalent of this note's `deployment.yaml` + `service.yaml`.
+>
+> **Pod networking, one layer deeper than this note goes:** every Pod gets its own cluster-routable IP. Same-node Pods talk over a veth pair; cross-node Pods route through the CNI's virtual overlay network — either way the Pod IP stays reachable and location-transparent. DNS-based service discovery (Pods resolve Services **by name**, not IP) sits on top of this.
+>
+> 📄 Full deck: [class4-kubernetes.pptx](uploads/class-04-kubernetes/class4-kubernetes.pptx) *(in this repo's `uploads/`)*
+>
+> 🔢 **Numbering, again:** the file is titled "Class 4" but its own opening slide says **"Class 3"** (and credits a different instructor, Eduard Usatchev, than the deck's Drive owner). A third disagreement to add to the pile — see the callout at the top of this note. Navigate by topic.
+
+## 📬 The REAL assignment (from Yariv's drive)
+
+> [!important] 🧪 Kubernetes Basics — CLI Assignment (YAML Provided)
+> The actual graded homework — **CLI only, no Helm, and you may not edit the provided YAML files**:
+> 1. **Install** `kubectl`, `minikube`, and Docker/Podman. Verify: `kubectl version --client`, `minikube version`.
+> 2. **Start & inspect** the cluster: `minikube start`, then `kubectl cluster-info`, `kubectl get nodes`, `kubectl get namespaces`, `kubectl get pods -n kube-system`.
+> 3. **Explore Services** cluster-wide: `kubectl get services -A` — and be ready to explain what a Kubernetes Service *is*.
+> 4. **Deploy** the provided four-file `k8s/` folder (`backend-deployment.yaml` + `backend-service.yaml` → `nginxdemos/hello` on **ClusterIP**; `frontend-deployment.yaml` + `frontend-service.yaml` → `nginx:alpine` on **NodePort**) with a single `kubectl apply -f .` from inside `k8s/`.
+> 5. **Verify**: `kubectl get deployments`, `get pods`, `get services` all show both apps running.
+> 6. **Reach the frontend from a browser** — Minikube has a one-command way to open a Service directly (the assignment deliberately doesn't name it: `minikube service <name>` is the tool to go find yourself).
+> 7. **Inspect**: `kubectl describe deployment frontend`, `describe pod <name>`, `logs <name>`.
+> 8. **Tear down**: `kubectl delete -f .`, then confirm `get pods`/`get deployments`/`get services` are all empty.
+> 9. **Bonus:** scale the backend, and explain *why the frontend is reachable but the backend isn't* — that's this note's own [[#🌐 Networking (how traffic reaches Pods)|ClusterIP vs NodePort]] distinction, graded.
+>
+> 📄 Full assignment: [kubernetes-basics-cli-assignment.docx](uploads/class-04-kubernetes/kubernetes-basics-cli-assignment.docx) *(in this repo's `uploads/`)*
+
 ## 🔎 Learn to fish — find it yourself (don't just copy)
 
 > [!tip] Beat "monkey-see-monkey-do"
@@ -337,6 +367,21 @@ kubectl explain pod.spec.containers   # describe ANY field of ANY resource
 > [!question]- Desired state
 > The end state you declare in YAML; the control plane works to make reality match it.
 
+> [!question]- Master components (control plane)
+> API Server, etcd, Scheduler, Controller Manager — make cluster-wide decisions; can run on any machine.
+
+> [!question]- Node components
+> kubelet, kube-proxy, container runtime — run on every node, actually execute the workloads.
+
+> [!question]- Docker Swarm
+> Docker's own native clustering tool — an alternative container orchestrator to Kubernetes.
+
+> [!question]- Ad Hoc (kubectl)
+> Imperative one-off commands (`kubectl run`, `kubectl create deployment ...`) as opposed to declarative YAML + `apply`.
+
+> [!question]- Minikube
+> Runs a single-node Kubernetes cluster locally for development/learning; `minikube start` / `minikube service <name>`.
+
 > [!srdeck]- 🔁 Raw review deck — the plugin reads this (collapsed on purpose; looks like text by design)
 > #flashcards/devops
 > Kubernetes::Open-source container orchestrator that keeps your declared desired state true via a continuous reconciliation loop.
@@ -363,6 +408,11 @@ kubectl explain pod.spec.containers   # describe ANY field of ANY resource
 > PersistentVolumeClaim::A Pod's request for durable storage (size + access mode) that survives restarts.
 > kubectl apply -f::Declarative command that creates or updates resources to match a manifest.
 > Desired state::The end state you declare in YAML; the control plane works to make reality match it.
+> Master components::API Server, etcd, Scheduler, Controller Manager — cluster-wide decisions, run on any machine.
+> Node components::kubelet, kube-proxy, container runtime — run on every node, execute the workloads.
+> Docker Swarm::Docker's own native clustering tool — an alternative container orchestrator to Kubernetes.
+> Ad Hoc (kubectl)::Imperative one-off commands (kubectl run, kubectl create deployment) vs declarative YAML + apply.
+> Minikube::Runs a single-node Kubernetes cluster locally for development/learning.
 
 ## ⚠️ Gotchas
 

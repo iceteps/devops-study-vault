@@ -7,9 +7,10 @@ his numbers drift from the real calendar (the "class 3" Git deck's title slide s
 
 ```
 uploads/
-├── class-02-docker/    class2-docker.pptx · docker-assignment-1.docx
-├── class-03-git/       class3-git.pptx · git-assignment-branching-merging-conflicts.docx
-└── class-NN-<topic>/   ← next class goes here
+├── class-02-docker/     class2-docker.pptx · docker-assignment-1.docx
+├── class-03-git/        class3-git.pptx · git-assignment-branching-merging-conflicts.docx
+├── class-04-kubernetes/ class4-kubernetes.pptx · kubernetes-basics-cli-assignment.docx
+└── class-NN-<topic>/    ← next class goes here
 ```
 
 > Official course repo (the teacher's): https://github.com/yfreifeld/devops-course

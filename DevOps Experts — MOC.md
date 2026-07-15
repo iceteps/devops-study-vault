@@ -62,6 +62,7 @@ Follow the arrows — each builds on the last. Concepts first, then the capstone
 > - **The teacher's drive folders** (`class 2` = Docker, `class 3` = Git) — shifted differently.
 > - **His deck titles = the real calendar**: the "class 3" Git deck's own title slide says **Class 6**, and that's the actual session count (session 1 was the intro → [[DevOps Foundations]]; several sessions per topic happen).
 > - Repo folders 04, 07, 09, 10 have no hands-on materials, so they have no notes.
+> - **Fresh example (2026-07-15):** the teacher's Drive folder for "lesson 4" contains `Class 4 - kubernetes.pptx` — whose own opening slide says **"Class 3"** — but the actual hands-on Kubernetes material lives in **repo folder `class5/`**, mined into [[Class 05 - Kubernetes]]. Four different numbers (drive "4", deck-internal "3", repo "5", and whatever the real calendar session is) for one topic. This is why the rule exists.
 >
 > **Rule of thumb: navigate by *topic*, never by number.** Every class note repeats this in a small collapsed callout under its title. When in doubt about "which class are we on," check the latest deck's title slide.
 
