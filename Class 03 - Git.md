@@ -195,6 +195,9 @@ Follow along in a real terminal. This mirrors Yariv's class session.
 >
 > 🗡️ **Practice it risk-free first:** missions 5–7 in [Shell Quest](https://github.com/iceteps/shell-quest) are this exact assignment — mission 7 is the conflict finale.
 
+> [!success] ✅ Status — submitted 2026-07-15
+> Repo: [github.com/iceteps/git-python-practice](https://github.com/iceteps/git-python-practice). Core assignment (Parts 1–9, incl. a real merge conflict manufactured and resolved by hand) done, plus the **full 11-task bonus advanced-practice section** (history inspection, diff practice, amend, revert, stash, branch cleanup, remote sync, rebase, tagging `v1.0.0`, `.gitignore` practice, detached HEAD, and both recovery scenarios). `feature/mistake` branch was deliberately left unmerged on purpose — it's the artifact proving Scenario A's recovery worked (git refuses to delete an unmerged branch, which is the point).
+
 ## 🧗 Extra credit — beyond class *(addition)*
 
 > [!example] 🆕 These drills are an **addition** — not covered in the class materials
