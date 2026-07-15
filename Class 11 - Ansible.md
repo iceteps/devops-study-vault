@@ -63,6 +63,8 @@ The hierarchy flows: **[[Terminology#Inventory|Inventory]] → [[Terminology#Pla
 - **[[Terminology#Role|Role]]** — a standardized folder layout that Ansible auto-loads: `roles/<name>/tasks/main.yml`, `handlers/main.yml`, `templates/`, `files/`, `vars/`, `defaults/`. Makes config reusable and shareable (Ansible Galaxy).
 - **[[Terminology#Template (Jinja2)|Jinja2 template]]** (`.j2`) — a text file with `{{ placeholders }}` rendered per-host by the `template` module, so each machine gets its own customized config.
 - **[[Terminology#Idempotency|Idempotency]]** — re-running converges to the same state. Output tells the story: `ok=` (already correct) vs `changed=` (had to fix drift).
+- **`become: true`** — privilege escalation (sudo). Installing packages/adding users needs root; set it per-play or per-task. The demo playbooks rely on it — without it, `apt` fails with permission errors.
+- **Facts** — per-host system info Ansible gathers automatically at play start (`gather_facts: true`): `ansible_facts['os_family']`, IPs, memory. Branch on them with `when: ansible_facts['os_family'] == "Debian"` — that's how one playbook serves mixed fleets.
 
 ## 🛠️ Guided walkthrough — dockerized `ansible-demo` mini-lab
 
@@ -122,6 +124,8 @@ A tiny lab with one **control** container and two managed nodes (`node1`, `node2
 > This demo uses hostname-based nodes and manual `ssh-copy-id`. The [[Class 14 - Ansible Lab]] uses a tidier dockerized inventory (`hosts.ini` with IPs `172.20.0.11/12`, a mounted `id_rsa`, and `StrictHostKeyChecking=no`) — go there for a smoother re-run.
 
 ## 🔬 Drills (earn XP)
+
+> 🗡️ **Warm up in [Shell Quest](https://github.com/iceteps/shell-quest):** mission 13 "Agentless Army 📜" — ping, playbook, the changed=0 idempotency proof, and a handler firing on drift.
 
 - [ ] **(10 XP)** Run `ansible servers -m ping` and get `pong` from both nodes. **Done when:** both report `SUCCESS`.
 - [ ] **(15 XP)** Install `vim` ad-hoc via the `apt` module, then run the *same* command again. **Done when:** first run is `changed`, second is `ok` — you've *seen* idempotency.

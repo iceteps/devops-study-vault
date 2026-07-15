@@ -86,6 +86,18 @@ difficulty: intermediate
 > [!warning] You publish to an exchange, not a queue
 > `channel.basic_publish(exchange='', routing_key='orders', ...)` looks like it publishes "to the orders queue," but really it publishes to the **default exchange** with routing key `orders`, and *that* exchange forwards it to the matching queue. Subtle, but it's why the `curl` example targets `amq.default` and not a queue.
 
+### Exchange types — beyond the default *(one level up)*
+
+The default (`''`) exchange routes by queue-name and that's all our labs need — but named exchanges are where RabbitMQ gets powerful:
+
+| Type | Routing rule | Classic use |
+|---|---|---|
+| **direct** | routing key must match the binding key exactly | route `error` logs to the error queue |
+| **fanout** | copies every message to **all** bound queues, key ignored | pub/sub broadcasts (every service gets the event) |
+| **topic** | pattern match: `logs.*.error`, `#` = many words | selective subscriptions |
+
+A **binding** is the queue↔exchange subscription that makes any of this work. Two consumers on **one queue** split messages (work queue); two queues bound to a **fanout** exchange each get **every** message (pub/sub) — that distinction is the interview question.
+
 ### Competing consumers (work queues)
 
 Start **N identical consumers** on the **same queue** and RabbitMQ **round-robins** messages across them. No code change, no coordinator — just launch more processes. This is the "work queue" pattern and it's how you scale throughput horizontally. `consumer-multi.py` gives each instance a random name (`consumer-ab12cd`) so you can *see* which worker grabbed which message.
@@ -161,6 +173,8 @@ Start **N identical consumers** on the **same queue** and RabbitMQ **round-robin
 ---
 
 ## 🔬 Drills (earn XP)
+
+> 🗡️ **Warm up in [Shell Quest](https://github.com/iceteps/shell-quest):** mission 15 "Post Office 📨" — produce with no consumer alive, watch the queue hold 5 messages, then drain it.
 
 - [ ] **(10 XP)** Bring the broker up with `docker compose up -d` and confirm both ports (`5672`, `15672`) are mapped via `docker compose ps`. **Done when:** you can log into the UI at 15672 with guest/guest.
 - [ ] **(15 XP)** Run `producer.py` alone (no consumers) and watch the `orders` queue **Ready** count grow to 20 in the UI. **Done when:** you've screenshotted queue depth = 20 with 0 consumers.
@@ -308,6 +322,7 @@ python -c "import pika; help(pika.BlockingConnection)"   # inspect the client
 > basic_consume::pika call that registers a callback to receive messages from a queue.
 > basic_ack::Consumer's confirmation that a message was handled, so RabbitMQ can delete it.
 > auto_ack=True::Ack a message on delivery instead of after processing — faster but loses messages on crash.
+> <!--SR:!2026-07-15,0,230-->
 > Competing consumers::Multiple consumers on one queue; RabbitMQ round-robins messages to scale work horizontally.
 > prefetch_count=1::Fair-dispatch setting — don't send a worker a new message until it acks the current one.
 > %2F in the HTTP API::URL-encoded `/`, naming the default virtual host in RabbitMQ's HTTP API path.

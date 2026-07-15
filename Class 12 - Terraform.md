@@ -83,6 +83,8 @@ variable "aws_region" {
 }
 ```
 
+Where do variables get their VALUES? Precedence (low → high): the `default` above → `TF_VAR_aws_region` env var → `terraform.tfvars` (auto-loaded) → `-var-file=prod.tfvars` → `-var "aws_region=eu-west-1"`. No value from anywhere → Terraform prompts interactively. **This is why `*.tfvars` is gitignored: it's where real values (often credentials) live.**
+
 **Output** — a value Terraform prints (and stores) after `apply` — the useful facts you actually need, like the server's IP:
 ```hcl
 # outputs.tf
@@ -146,6 +148,8 @@ Terraform reads **all** `*.tf` in a folder and merges them — order and filenam
 > ⚠️ **`terraform.tfstate` and `*.tfvars` are gitignored on purpose** — state and variable files can hold IPs, keys, and secrets. The generated `terraform-key.pem` (from the `tls_private_key` resource) is a **private SSH key** — treat it like a password and never commit it.
 
 ## 🔬 Drills (earn XP)
+
+> 🗡️ **Warm up in [Shell Quest](https://github.com/iceteps/shell-quest):** mission 14 "Declare the Cloud 🏗️" — init → plan → apply (type yes!) → grow the config → destroy. The full lifecycle, no AWS bill.
 
 - [ ] **(10 XP)** Run `aws sts get-caller-identity` and confirm you're in the right account. **Done when:** you see your ARN + account id.
 - [ ] **(15 XP)** `terraform init` the `class12/terraform` folder. **Done when:** you see `successfully initialized` and a `.terraform/` dir appears.

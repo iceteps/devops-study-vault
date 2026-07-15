@@ -108,6 +108,9 @@ Open a terminal and run these in order. Expected output shown so you know it wor
 
 > 🧮 **Total available: 120 XP.** 100+ = you've earned the badge below.
 
+> [!tip] stop ≠ rm — the distinction beginners blur
+> `docker stop` freezes the container but **keeps its writable layer** — `docker start` resumes it, files intact. `docker rm` **destroys** that layer forever (hence `rm -f` for a running one). "Containers are disposable" means *design* for rm — not that stop loses anything.
+
 ## 🧗 Extra credit — beyond class *(addition)*
 
 > [!example] 🆕 These drills are an **addition** — not covered in the class materials

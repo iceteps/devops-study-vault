@@ -25,11 +25,12 @@ TL;DR → 🎯 Learning goals → 🧩 Big idea (analogy + vertical diagram, cod
 1. `uploads/class-NN-<topic>/` ← the teacher's new files, renamed clean (lowercase-dashes, no emoji/spaces). NN mirrors **his drive-folder numbering** (which itself drifts from the real calendar — his deck titles are the calendar truth); the **topic suffix is the reliable key**.
 2. Mine them (pptx/docx = zip + XML regex, stdlib only) into the class note's `📬 The REAL assignment` and `🖥️ From the class deck` sections.
 3. Student solution work goes under `homework/class-NN-<topic>/` — mind the sharing-etiquette note there (public repo; no solutions before deadlines).
-4. Commit + push (this repo has no CI; the review is human).
+4. Update `🎓 Mastery Path.md` — the per-topic rank ladders + dashboard table are the user's primary progress tracker: new topic → new track section; assignment submitted → flip its box and the dashboard cell; keep the "📍 you are here" marker and the MOC's "Current climb" line pointing at the active topic.
+5. Commit + push (this repo has no CI; the review is human).
 
 ## Ecosystem
 
-- Companion game repo: https://github.com/iceteps/shell-quest (missions reference notes here via their `vault_note` field — renaming a note breaks that link; update both).
+- Companion game repo: https://github.com/iceteps/shell-quest (missions reference notes here via their `vault_note` field — renaming a note breaks that link; update both). As of 2026-07-15 the game covers **every** course topic (15 missions, `demo` replay mode, 67-question quiz); when a class note gains a REAL-assignment section, link the matching mission number in it, and add a "Warm up in Shell Quest" pointer under the note's Drills heading for topics without assignments.
 - `TEACHER-PROMPT.md` is the reusable prompt to regenerate this whole toolkit for another course — keep it updated if conventions here change.
 - `setup/cheatsheet-flash.css` must stay in sync with the snippet users install (it styles `[!cheatsheet]` and `[!srdeck]` callouts).
 - Owner: `iceteps`; the teacher (`yfreifeld`) may become a collaborator. `.obsidian/`, `Spaced Repetition/`, `.trash/` are gitignored (personal state) — never commit them.

@@ -36,7 +36,7 @@ DevOps tears down that wall. **Dev + Ops = one crew** with shared ownership, aut
 > [!tip] The three pillars to remember
 > 1. **Culture** — shared ownership, blameless, fast feedback.
 > 2. **Automation** — if a human does it twice, a machine should do it forever.
-> 3. **Measurement** — you can't improve what you can't see ([[Terminology#Observability|observability]]).
+> 3. **Measurement** — you can't improve what you can't see ([[Terminology#Observability|observability]]). The industry's four standard numbers (**DORA metrics**): deployment frequency, lead time for changes, change-failure rate, time to restore. Fast *and* safe, measured.
 
 > [!info] Idempotency — a word you'll hear a lot
 > An operation is **idempotent** if running it once or a hundred times gives the same end state. "Make sure this package is installed" is idempotent; "install this package" (which errors on the second run) is not. DevOps tooling ([[Class 11 - Ansible|Ansible]], [[Class 12 - Terraform|Terraform]], [[Class 05 - Kubernetes|Kubernetes]]) loves idempotency because it makes automation safe to re-run.

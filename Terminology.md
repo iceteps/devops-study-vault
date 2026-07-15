@@ -65,6 +65,9 @@ Left = host, right = container.
 Defines a multi-container app in one `docker-compose.yml` and runs it with `docker compose up`.
 Handles networks, dependencies, and healthchecks for you.
 
+### Docker Swarm
+Docker's own built-in clustering/orchestration mode — turns several Docker engines into one virtual engine. The class-4 deck names it (with Mesos Marathon) as the pre-Kubernetes alternative; K8s won that war.
+
 ---
 
 ## 🌿 Git & version control
@@ -179,6 +182,39 @@ A mark on a Node that repels Pods unless they tolerate it (e.g. keep app pods of
 ### K3s
 A lightweight, single-binary Kubernetes distribution — great for small/edge nodes (used in the [[SkyWatch Capstone]]).
 
+### Minikube
+Runs a full single-node Kubernetes cluster on your own machine — the course's local lab cluster. `minikube start`, then `minikube service <name>` opens a NodePort service in your browser.
+
+### Control plane
+The cluster's brain: API Server (the hub everything talks through), etcd, Scheduler, Controller Manager. Makes global decisions; runs no app workloads (usually tainted).
+
+### etcd
+The control plane's key-value database — the single source of truth for all cluster state. Only the API Server talks to it directly.
+
+### kubelet
+The node agent: watches the API Server for Pod specs assigned to its node and makes the container runtime start/stop them, reporting status back.
+
+### kube-proxy
+The node's traffic plumber — programs the network rules that make [[Terminology#Service]] IPs actually route to Pods.
+
+### ClusterIP
+The default [[Terminology#Service]] type: a stable virtual IP reachable **only inside** the cluster. Internal APIs live here — that's why the CLI assignment's backend isn't browser-reachable.
+
+### LoadBalancer
+A [[Terminology#Service]] type that asks the cloud provider for a real external load balancer with a public IP (shows `<pending>` forever on a bare local cluster). Production's front door.
+
+### ClusterRole
+Cluster-scoped [[Terminology#RBAC]] permissions — like a Role but for all namespaces or cluster-level resources (Nodes, namespaces themselves). Granted via a ClusterRoleBinding.
+
+### PersistentVolume
+The cluster-level storage resource itself (AWS EBS, NFS, local disk), usually provisioned by admins or the cloud. A [[Terminology#PersistentVolumeClaim]] is a request that binds to one.
+
+### CronJob
+Runs a [[Terminology#Job]] on a schedule (cron syntax, e.g. `0 2 * * *` = nightly backup at 02:00).
+
+### Reconciliation loop
+The heartbeat of Kubernetes: controllers endlessly compare **desired state** (your YAML) with **actual state** and act to close the gap. It's why deleting a Deployment-owned Pod just summons a new one.
+
 ---
 
 ## ⎈ Helm
@@ -244,6 +280,9 @@ A plugin for a platform (AWS, Azure, GCP) that Terraform uses to create resource
 
 ### Resource
 One infrastructure object declared in `.tf` (an EC2 instance, a security group, a VPC).
+
+### Variable
+A named input to Terraform code (`variable "region" {}` → `var.region`). Values arrive from `terraform.tfvars` files, `-var` flags, or `TF_VAR_*` environment variables — exactly why `*.tfvars` (often holding credentials) must stay gitignored.
 
 ### State
 Terraform's record (`terraform.tfstate`) of what it has created, mapping code to real resources. Often stored remotely in a [[Terminology#Backend]].

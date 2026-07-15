@@ -142,7 +142,7 @@ Goal: wire a **minimal** push → image → tag-bump → ArgoCD sync loop.
 
 2. **Add the secrets.** In GitHub → repo → *Settings → Secrets and variables → Actions*, add `DOCKERHUB_USERNAME` and a `DOCKERHUB_TOKEN` (a DockerHub **access token**, not your password).
 
-3. **Add the tag-bump step** (see the `gitops.ci.yaml` snippet above): clone the GitOps repo with a `GITOPS_REPO_TOKEN`, `sed` the tag into `values-dev.yaml`, commit, push.
+3. **Add the tag-bump step** (see the `gitops.ci.yaml` snippet in the collapsed cheat-sheet at the bottom): clone the GitOps repo with a `GITOPS_REPO_TOKEN`, `sed` the tag into `values-dev.yaml`, commit, push.
 
 4. **Create the ArgoCD Application** — apply `dev.yaml` once:
    ```bash
@@ -161,6 +161,8 @@ Goal: wire a **minimal** push → image → tag-bump → ArgoCD sync loop.
 ---
 
 ## 🔬 Drills (earn XP)
+
+> 🗡️ **Warm up in [Shell Quest](https://github.com/iceteps/shell-quest):** mission 12 "The Robot Deploys 🤖" — push a commit, watch CI bump the tag, sync ArgoCD. The whole class-8 loop in 5 minutes.
 
 - [ ] **Drill 1 — Trigger literacy (10 XP).** Write an `on:` block that runs only on pushes to `main` *and* `dev`. **Done when:** it matches `class8/gitops.ci.yaml` exactly.
 - [ ] **Drill 2 — Short SHA (15 XP).** Add a step that exposes `${GITHUB_SHA::7}` as a step output named `SHA_TAG`. **Done when:** a later step references it as `${{ steps.vars.outputs.SHA_TAG }}`.
@@ -234,72 +236,72 @@ argocd app --help        # inspect/sync apps from the CLI
 > [!tip] Two ways to study these
 > **Flip a card:** click any ❓ below to reveal the answer. **Spaced repetition:** click the 🃏 ribbon icon (or `Ctrl+P → Spaced Repetition: Review flashcards`) and review the **devops** deck — the collapsed deck at the bottom feeds it.
 
-> [!question]- - CI (Continuous Integration)
+> [!question]- CI (Continuous Integration)
 > Automatically build + test every push so integration bugs surface early; here it also builds/pushes the Docker image.
 
-> [!question]- - CD (Continuous Delivery/Deployment)
+> [!question]- CD (Continuous Delivery/Deployment)
 > Automatically make the tested artifact deployable (delivery) or deploy it (deployment); in GitOps a deploy = a Git commit.
 
-> [!question]- - GitOps
+> [!question]- GitOps
 > Operating infrastructure by committing desired state to Git and letting an agent reconcile the live system to match.
 
-> [!question]- - ArgoCD
+> [!question]- ArgoCD
 > In-cluster Kubernetes controller that watches a Git repo and keeps the cluster equal to it, via the `Application` CR.
 
-> [!question]- - Artifact
+> [!question]- Artifact
 > Immutable build output you ship — here the Docker image `user/myapp:<sha>`.
 
-> [!question]- - GitHub Actions trigger `on: push`
+> [!question]- GitHub Actions trigger `on: push`
 > Runs the workflow when commits are pushed to the listed branches.
 
-> [!question]- - `${GITHUB_SHA
-> 7}`:: The first 7 characters of the commit SHA, used as an immutable, traceable image tag.
+> [!question]- `${GITHUB_SHA::7}`
+> The first 7 characters of the commit SHA, used as an immutable, traceable image tag.
 
-> [!question]- - GitHub Secrets
+> [!question]- GitHub Secrets
 > Encrypted values (e.g. `DOCKERHUB_TOKEN`) injected as `${{ secrets.NAME }}`; never hard-coded in YAML.
 
-> [!question]- - `syncPolicy.automated`
+> [!question]- `syncPolicy.automated`
 > Tells ArgoCD to sync without a human clicking; enables prune + selfHeal.
 
-> [!question]- - prune (ArgoCD)
+> [!question]- prune (ArgoCD)
 > Deletes cluster resources that were removed from Git.
 
-> [!question]- - selfHeal (ArgoCD)
+> [!question]- selfHeal (ArgoCD)
 > Reverts manual drift in the live cluster back to the Git-defined state.
 
-> [!question]- - Drift
+> [!question]- Drift
 > When live cluster state differs from the Git-defined desired state (ArgoCD marks it OutOfSync).
 
-> [!question]- - Pull-based deploy
+> [!question]- Pull-based deploy
 > Cluster agent pulls desired state from Git; creds stay in-cluster.
 
-> [!question]- - Push-based deploy
+> [!question]- Push-based deploy
 > CI pushes changes into the cluster with `kubectl`/`helm`; creds live in CI.
 
-> [!question]- - `project: default`
+> [!question]- `project: default`
 > The AppProject an Application belongs to — required in ArgoCD 2.x.
 
-> [!question]- - `targetRevision`
+> [!question]- `targetRevision`
 > The Git branch/tag/commit ArgoCD tracks for an Application's source.
 
 > [!srdeck]- 🔁 Raw review deck — the plugin reads this (collapsed on purpose; looks like text by design)
 > #flashcards/devops
-> - CI (Continuous Integration)::Automatically build + test every push so integration bugs surface early; here it also builds/pushes the Docker image.
-> - CD (Continuous Delivery/Deployment)::Automatically make the tested artifact deployable (delivery) or deploy it (deployment); in GitOps a deploy = a Git commit.
-> - GitOps::Operating infrastructure by committing desired state to Git and letting an agent reconcile the live system to match.
-> - ArgoCD::In-cluster Kubernetes controller that watches a Git repo and keeps the cluster equal to it, via the `Application` CR.
-> - Artifact::Immutable build output you ship — here the Docker image `user/myapp:<sha>`.
-> - GitHub Actions trigger `on: push`::Runs the workflow when commits are pushed to the listed branches.
-> - `${GITHUB_SHA::7}`:: The first 7 characters of the commit SHA, used as an immutable, traceable image tag.
-> - GitHub Secrets::Encrypted values (e.g. `DOCKERHUB_TOKEN`) injected as `${{ secrets.NAME }}`; never hard-coded in YAML.
-> - `syncPolicy.automated`::Tells ArgoCD to sync without a human clicking; enables prune + selfHeal.
-> - prune (ArgoCD)::Deletes cluster resources that were removed from Git.
-> - selfHeal (ArgoCD)::Reverts manual drift in the live cluster back to the Git-defined state.
-> - Drift::When live cluster state differs from the Git-defined desired state (ArgoCD marks it OutOfSync).
-> - Pull-based deploy::Cluster agent pulls desired state from Git; creds stay in-cluster.
-> - Push-based deploy::CI pushes changes into the cluster with `kubectl`/`helm`; creds live in CI.
-> - `project: default`::The AppProject an Application belongs to — required in ArgoCD 2.x.
-> - `targetRevision`::The Git branch/tag/commit ArgoCD tracks for an Application's source.
+> CI (Continuous Integration)::Automatically build + test every push so integration bugs surface early; here it also builds/pushes the Docker image.
+> CD (Continuous Delivery/Deployment)::Automatically make the tested artifact deployable (delivery) or deploy it (deployment); in GitOps a deploy = a Git commit.
+> GitOps::Operating infrastructure by committing desired state to Git and letting an agent reconcile the live system to match.
+> ArgoCD::In-cluster Kubernetes controller that watches a Git repo and keeps the cluster equal to it, via the `Application` CR.
+> Artifact::Immutable build output you ship — here the Docker image `user/myapp:<sha>`.
+> GitHub Actions trigger `on: push`::Runs the workflow when commits are pushed to the listed branches.
+> `${GITHUB_SHA::7}`:: The first 7 characters of the commit SHA, used as an immutable, traceable image tag.
+> GitHub Secrets::Encrypted values (e.g. `DOCKERHUB_TOKEN`) injected as `${{ secrets.NAME }}`; never hard-coded in YAML.
+> `syncPolicy.automated`::Tells ArgoCD to sync without a human clicking; enables prune + selfHeal.
+> prune (ArgoCD)::Deletes cluster resources that were removed from Git.
+> selfHeal (ArgoCD)::Reverts manual drift in the live cluster back to the Git-defined state.
+> Drift::When live cluster state differs from the Git-defined desired state (ArgoCD marks it OutOfSync).
+> Pull-based deploy::Cluster agent pulls desired state from Git; creds stay in-cluster.
+> Push-based deploy::CI pushes changes into the cluster with `kubectl`/`helm`; creds live in CI.
+> `project: default`::The AppProject an Application belongs to — required in ArgoCD 2.x.
+> `targetRevision`::The Git branch/tag/commit ArgoCD tracks for an Application's source.
 
 ## ⚠️ Gotchas
 
@@ -331,7 +333,7 @@ argocd app --help        # inspect/sync apps from the CLI
 
 > [!success] Class 08 cleared when you can…
 > - [ ] Draw the full loop from memory: push → CI build/push image → tag bump in Git → ArgoCD pull/sync.
-> - [ ] Write a `on: push` workflow that tags an image with `${GITHUB_SHA::7}` using secrets.
+> [ ] Write a `on: push` workflow that tags an image with `${GITHUB_SHA::7}` using secrets.
 > - [ ] Read every block of an ArgoCD `Application` and explain `prune` + `selfHeal`.
 > - [ ] Explain pull vs push and why GitOps keeps cluster creds *out* of CI.
 > - [ ] Name three gotchas without looking: `[skip ci]`, the wrong `yq`, `project: default`.
@@ -378,7 +380,7 @@ argocd app --help        # inspect/sync apps from the CLI
 >         uses: docker/build-push-action@v5
 >         with:
 >           push: true
->           tags: yfreifeld/dockertests:${{ github.sha }}  # tag = commit SHA
+>           tags: yfreifeld/dockertests:${{ github.sha }}  # class file: FULL sha; our rule: 7-char ${GITHUB_SHA::7}
 > ```
 >
 > ### The GitOps-updating workflow (`class8/gitops.ci.yaml`) — the tag-bump magic

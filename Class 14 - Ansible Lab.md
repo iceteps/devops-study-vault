@@ -241,6 +241,7 @@ docker compose --help    # up / exec / logs / down
 > ansible-playbook::Command that executes a YAML playbook against inventory hosts, running its tasks in order.
 > become: true::Playbook directive to run tasks with privilege escalation (sudo) on the target.
 > Idempotency::Running the same playbook repeatedly yields the same end state; unchanged tasks report `ok`, not `changed`. See [[Terminology#Idempotency]].
+> <!--SR:!2026-07-18,3,250-->
 > Jinja2 template::A `.j2` file (e.g. `nginx.conf.j2`) with `{{ variables }}` that Ansible renders per-host via the `template` module. See [[Terminology#Template (Jinja2)]].
 > Handler::A task triggered only when `notify`-ed by a changed task (e.g. restart nginx after config change). See [[Terminology#Handler]].
 > Semaphore::A web UI on top of Ansible (here at `localhost:3000`, admin/admin123) for running playbooks with a GUI instead of the CLI.

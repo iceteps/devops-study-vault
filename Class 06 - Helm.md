@@ -175,6 +175,26 @@ A hands-on mini-lab. Run it against your kind/minikube/dev cluster.
 
 ## 🔬 Drills (earn XP)
 
+> 🗡️ **Warm up in [Shell Quest](https://github.com/iceteps/shell-quest):** mission 11 "Package It ⎈" — template → install → upgrade --set → rollback → history, risk-free. Type `demo` to watch it solved first.
+
+> [!note] The dev override file the drills use — `class6/values-dev.yaml` (real contents)
+> ```yaml
+> replicaCount: 4
+> image:
+>   repository: nginx
+>   tag: "latest"
+> service:
+>   type: ClusterIP
+>   port: 80
+> cron:
+>   schedule: "* * * * *"    # the CronJob template reads this
+> daemonset:
+>   resources:
+>     requests: { cpu: 200m, memory: 128Mi }
+>     limits:   { cpu: 200m, memory: 256Mi }
+> ```
+> So vs the chart default: **replicaCount 4**, plus the `cron.*` and `daemonset.*` keys the extra templates consume — these are the "differing fields" Drill 3 asks you to spot.
+
 - [ ] **(10 XP)** Run `helm create drill-app`, then `ls drill-app/templates`. List the files Helm scaffolded. **Done when:** you can name at least 3 files under `templates/` and say what `_helpers.tpl` is for (named template partials).
 - [ ] **(15 XP)** In `my-service`, run `helm template rel ./my-service` and find the line that becomes the Deployment's `name`. **Done when:** you can explain why it reads `rel-deploy` and not `my-microservice-deploy` (release name vs chart name).
 - [ ] **(15 XP)** Render with the dev override: `helm template rel ./my-service -f values-dev.yaml`. **Done when:** you can point to the field that differs from the default `values.yaml` render (hint: `cron.schedule` / `daemonset...cpu`).

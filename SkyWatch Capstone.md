@@ -32,6 +32,10 @@ Python Worker  (×2 replicas)
 Open-Meteo API  (geocoding + forecast)  →  result flows back to the user
 ```
 
+*(How does the answer travel **back**? RPC over the queue: the frontend publishes each request
+with a `reply_to` queue + `correlation_id`, the worker publishes the forecast to that reply
+queue, and the waiting frontend matches it by id. Same broker, both directions.)*
+
 **Node layout (3× t3.micro, eu-west-1):**
 
 | Node | Hostname | Runs |
@@ -193,7 +197,7 @@ The real homework. Do these **in order** — each part depends on the one before
 - [ ] **+10 XP** Open Grafana, confirm dashboards render. **Done when:** you see live cluster + RabbitMQ metrics.
 
 > [!success] Capstone cleared when you can…
-> …run the [Session Quick-Start](#) top to bottom — `terraform apply` → `ansible-playbook` → ArgoCD sync → weather in the browser → metrics in Grafana → `terraform destroy` — **from memory, on a fresh AWS account, in under an hour, with no cluster wipes.**
+> …run the [[#🏆 Final boss — the end-to-end challenge|end-to-end challenge]] top to bottom — `terraform apply` → `ansible-playbook` → ArgoCD sync → weather in the browser → metrics in Grafana → `terraform destroy` — **from memory, on a fresh AWS account, in under an hour, with no cluster wipes.** (Command-by-command runbook: the course repo's `assignment.md` → *Session Quick-Start*.)
 >
 > 🎖️ **Badge: SkyWatch Commander 🛰️**
 

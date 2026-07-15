@@ -162,6 +162,15 @@ Follow along in a real terminal. This mirrors Yariv's class session.
 
 ---
 
+## 🧗 Extra credit — beyond class *(addition)*
+
+> [!example] 🆕 These drills are an **addition** — not covered in the class materials
+> They're the next skill up from what class taught, chosen because you'll meet them in real work (and in the [[SkyWatch Capstone]]). Higher XP, higher payoff.
+
+- [ ] **Cause (and survive) a merge conflict (30 XP)** — class stopped at branching. Make two branches edit the SAME line of the same file, merge one into the other, and resolve the `<<<<<<<` conflict markers by hand. **Done when:** `git log --oneline --graph` shows the merge and you weren't scared.
+- [ ] **`git stash` — the panic button (20 XP)** — start editing, then pretend an urgent fix is needed: `git stash`, confirm the working dir is clean, fix-commit something else, `git stash pop`. **Done when:** you know when stash beats commit.
+- [ ] **Time travel, safely (25 XP)** — learn the difference the hard way: make 3 throwaway commits, `git revert` the middle one (history preserved), then `git reset --hard HEAD~1` the last (history rewritten). **Done when:** you can say which one is safe on a shared branch and why.
+
 ## 🖥️ From the class deck *(addition — mined from `Git.pptx`)*
 
 > [!info] What the slides add beyond the live session
@@ -191,21 +200,12 @@ Follow along in a real terminal. This mirrors Yariv's class session.
 > 6. **Trigger + resolve:** merge → conflict in `app.py` → open it, combine both ideas, **remove every `<<<<<<< ======= >>>>>>>` marker**, stage, commit, push.
 > 7. **Submit:** repo URL + output of `git log --oneline --graph` + a working final `app.py`.
 >
-> **Bonus part:** history spelunking (`git log --oneline`, `--graph --all`, `git show <hash>`) and diff practice (`git diff`, `--staged`, `git restore`, `git restore --staged`) — running `git status` before and after every step.
+> **Bonus part — 11 hands-on tasks** (run `git status` before and after each): history spelunking (`log --oneline`, `--graph --all`, `show <hash>`), diff practice (`diff`, `--staged`, `restore`, `restore --staged`), amend, revert, **stash** (stash/list/pop), branch cleanup (`branch -d`), remote sync (`fetch`, `diff main origin/main`, `pull --rebase`), **rebase** onto main, **tag** `v1.0.0` + push it, **`.gitignore`** a `.env` file, detached HEAD and back, and two recovery scenarios (`reset --hard HEAD~1` after branching off the mistake; `merge --abort`).
 >
 > 🗡️ **Practice it risk-free first:** missions 5–7 in [Shell Quest](https://github.com/iceteps/shell-quest) are this exact assignment — mission 7 is the conflict finale.
 
 > [!success] ✅ Status — submitted 2026-07-15
 > Repo: [github.com/iceteps/git-python-practice](https://github.com/iceteps/git-python-practice). Core assignment (Parts 1–9, incl. a real merge conflict manufactured and resolved by hand) done, plus the **full 11-task bonus advanced-practice section** (history inspection, diff practice, amend, revert, stash, branch cleanup, remote sync, rebase, tagging `v1.0.0`, `.gitignore` practice, detached HEAD, and both recovery scenarios). `feature/mistake` branch was deliberately left unmerged on purpose — it's the artifact proving Scenario A's recovery worked (git refuses to delete an unmerged branch, which is the point).
-
-## 🧗 Extra credit — beyond class *(addition)*
-
-> [!example] 🆕 These drills are an **addition** — not covered in the class materials
-> They're the next skill up from what class taught, chosen because you'll meet them in real work (and in the [[SkyWatch Capstone]]). Higher XP, higher payoff.
-
-- [ ] **Cause (and survive) a merge conflict (30 XP)** — class stopped at branching. Make two branches edit the SAME line of the same file, merge one into the other, and resolve the `<<<<<<<` conflict markers by hand. **Done when:** `git log --oneline --graph` shows the merge and you weren't scared.
-- [ ] **`git stash` — the panic button (20 XP)** — start editing, then pretend an urgent fix is needed: `git stash`, confirm the working dir is clean, fix-commit something else, `git stash pop`. **Done when:** you know when stash beats commit.
-- [ ] **Time travel, safely (25 XP)** — learn the difference the hard way: make 3 throwaway commits, `git revert` the middle one (history preserved), then `git reset --hard HEAD~1` the last (history rewritten). **Done when:** you can say which one is safe on a shared branch and why.
 
 ## 🔎 Learn to fish — find it yourself (don't just copy)
 

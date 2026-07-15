@@ -85,6 +85,7 @@ See [[Terminology#Kubernetes]] and [[Terminology#kubectl]] for the glossary anch
 - **Job** → run a task **to completion** once, then stop (e.g. compute π, run a migration). → [[Terminology#Job]]
 - **CronJob** → a Job on a **schedule** (cron syntax, e.g. `* * * * *` = every minute). → [[Terminology#CronJob]]
 - **DaemonSet** → runs **one Pod per node** — perfect for node-level agents like log shippers or monitors. → [[Terminology#DaemonSet]]
+- **StatefulSet** → like a Deployment but for **stateful** apps: stable pod names (`app-0`, `app-1`), ordered startup, per-pod storage. The capstone's RabbitMQ runs as one. → [[Terminology#StatefulSet]]
 
 ### 🌐 Networking (how traffic reaches Pods)
 
@@ -226,6 +227,17 @@ kubectl delete namespace dev   # nukes everything scoped inside it
 >
 > 🔢 **Numbering, again:** the file is titled "Class 4" but its own opening slide says **"Class 3"** (and credits a different instructor, Eduard Usatchev, than the deck's Drive owner). A third disagreement to add to the pile — see the callout at the top of this note. Navigate by topic.
 
+## 🖥️ From the class deck #2 *(addition — mined from `kubernetes-core-resources-with-yaml.pptx`, drive "Class 5")*
+
+> [!info] The second K8s deck goes deeper — five things this note didn't cover yet
+> 1. **RBAC has FOUR building blocks, not two pairs of three.** Beyond the namespaced [[Terminology#Role|Role]] + RoleBinding this note teaches, there are cluster-scoped **ClusterRole** + **ClusterRoleBinding** — for permissions that span all namespaces or hit cluster-level resources (read Nodes, list all namespaces). Mnemonic from the deck: *Roles define permissions, Bindings assign them.* RBAC answers three questions: **who** is asking, **what** verb, on **which** resources — and exists to kill the "everyone is effectively admin" default. → [[Terminology#ClusterRole]]
+> 2. **PersistentVolume (PV) is the other half of [[Terminology#PersistentVolumeClaim|PVC]].** The PV is the cluster-level storage resource itself (AWS EBS, GCP PD, NFS, local disk), usually provisioned by admins/cloud; your PVC is the *request* that binds to one. Containers are ephemeral — PVs are why data survives. → [[Terminology#PersistentVolume]]
+> 3. **Deployment vs DaemonSet, the exam table:** Deployment = app workloads, any node, YOU set replicas, scales by traffic. DaemonSet = node-level workloads (log collectors, monitoring agents, CNI plugins), exactly one pod per node, scales automatically when nodes join. The deck's "common mistake" row: using a Deployment for node agents, or a DaemonSet to scale an app.
+> 4. **Labels are the glue.** The ReplicaSet finds "its" pods purely by the label selector from the Deployment template — which is exactly why a selector/label typo gives you a Service with zero endpoints (this note's Gotcha) or a ReplicaSet that spawns infinite pods.
+> 5. **Namespaces are logical, NOT security.** The deck says it in bold: separate environments per namespace are convenience-isolation; real enforcement only comes from RBAC (+ quotas/limits per namespace).
+>
+> 📄 Full deck: [kubernetes-core-resources-with-yaml.pptx](uploads/class-05-kubernetes-resources/kubernetes-core-resources-with-yaml.pptx) *(in this repo's `uploads/`)*
+
 ## 📬 The REAL assignment (from Yariv's drive)
 
 > [!important] 🧪 Kubernetes Basics — CLI Assignment (YAML Provided)
@@ -241,6 +253,30 @@ kubectl delete namespace dev   # nukes everything scoped inside it
 > 9. **Bonus:** scale the backend, and explain *why the frontend is reachable but the backend isn't* — that's this note's own [[#🌐 Networking (how traffic reaches Pods)|ClusterIP vs NodePort]] distinction, graded.
 >
 > 📄 Full assignment: [kubernetes-basics-cli-assignment.docx](uploads/class-04-kubernetes/kubernetes-basics-cli-assignment.docx) *(in this repo's `uploads/`)*
+>
+> 🗡️ **Practice it risk-free first:** mission 8 "First Contact ☸️" in [Shell Quest](https://github.com/iceteps/shell-quest) IS this assignment — same four YAML files, same flow, same `minikube service` finale. Type `demo` inside the mission to watch it solved once, then do it yourself.
+>
+> 🛠️ **Local scaffold ready:** `C:\Users\icete\github\Devops\kubernetes-basics-assignment\` has the provided `k8s/` manifests (verbatim) + a checklist README — not yet executed/submitted.
+
+## 📬 The REAL assignment #2 — Core Resources & RBAC (drive "Class 5")
+
+> [!important] 🧪 Home Assignment: Kubernetes Core Resources & RBAC (Hands-On)
+> The second graded K8s homework — nine parts, all YAML provided in the doc, ends in RBAC:
+> 1. **Namespace** `dev` — and explain why namespace isolation is *logical*, not physical.
+> 2. **Pod** `demo-pod` (nginx) in dev — then answer: *who recreates it if deleted?* (Nobody — it's a bare pod. That's the point.)
+> 3. **Deployment** `app-deployment`, 3 replicas — scale it, delete a pod, watch the ReplicaSet heal it.
+> 4. **The chain:** scale to 5, then `kubectl set image` → a NEW ReplicaSet appears (that's how rollbacks work).
+> 5. **Service types:** apply ClusterIP + NodePort (30080) + LoadBalancer versions — know which is internal-only and which is production-grade.
+> 6. **Ingress** for `demo.local` → does nothing without an Ingress **Controller** (trick question in the doc).
+> 7. **ConfigMap + Secret** (`app-config`, `app-secret`) — wire them into the Deployment via `configMapKeyRef`/`secretKeyRef`; why RBAC must protect Secrets.
+> 8. **RBAC:** ServiceAccount `app-sa` + Role `pod-reader` + RoleBinding → prove with `kubectl auth can-i get pods --as=system:serviceaccount:dev:app-sa -n dev`.
+> 9. **Production thinking:** resources.limits, replicas 3, RollingUpdate — what changes dev→prod and why limits are mandatory.
+>
+> **Submit:** applied YAMLs + CLI outputs/screenshots + written answers. **Bonus:** everything as ONE multi-doc YAML applied in one shot — which is *literally* this repo's `class5/full-k8s-deploy.yaml`.
+>
+> 📄 Full assignment: [kubernetes-core-resources-rbac-assignment.docx](uploads/class-05-kubernetes-resources/kubernetes-core-resources-rbac-assignment.docx) *(in this repo's `uploads/`)*
+>
+> 🗡️ **Practice it risk-free first:** missions 9 "Break It, Watch It Heal 🩹" (parts 3–4) and 10 "Locked Down 🛡️" (parts 1, 7, 8 — the RBAC yes→no proof) in [Shell Quest](https://github.com/iceteps/shell-quest).
 
 ## 🔎 Learn to fish — find it yourself (don't just copy)
 

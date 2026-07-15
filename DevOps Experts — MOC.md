@@ -8,10 +8,18 @@ aliases: [Home, Index, MOC, Map of Content, DevOps Experts]
 The home base for the whole course. Every note connects back here and through [[Terminology]].
 New? Do the 5-minute [[00 - Start Here (Setup and Plugins)]] first so flashcards & callouts render.
 
+> [!success] ⭐ Start every study session here
+> 1. **Review cards** — `Ctrl+P → Spaced Repetition: Review flashcards` (5 min, keeps everything warm).
+> 2. **Open [[🎓 Mastery Path]]** — your rank dashboard. Pick the lowest open box on the topic you're climbing.
+> 3. **Do ONE thing** — a [Shell Quest](https://github.com/iceteps/shell-quest) mission (new topic? type `demo` inside it to watch it solved first), a drill block, or a real-assignment step.
+>
+> 📍 Current climb: **Kubernetes** — note updated with both REAL assignments; game missions 8–10 await; local scaffold ready.
+
 > [!abstract] What this vault is
 > A self-learning DevOps course: one note per class, each with a plain-English idea, a
 > hands-on walkthrough, **XP drills**, a **collapsible self-quiz**, **spaced-repetition
 > flashcards**, gotchas, and a boss challenge. Work through it, tick the boxes, collect the badges. 🎖️
+> The whole system in one line: **notes teach → [[🎓 Mastery Path]] tracks → [Shell Quest](https://github.com/iceteps/shell-quest) & the quiz train → the REAL assignments prove.**
 
 ---
 
@@ -41,6 +49,7 @@ Follow the arrows — each builds on the last. Concepts first, then the capstone
 
 | # | Note | Topic | Badge |
 |---|---|---|---|
+| ⭐ | [[🎓 Mastery Path]] | **Your rank dashboard — the note you actually open daily** | 🎓 |
 | — | [[00 - Start Here (Setup and Plugins)]] | Obsidian setup, plugins, how to study | 🚀 |
 | — | [[DevOps Foundations]] | What DevOps is: Agile, CI/CD, strategies | 🎖️ DevOps Initiate |
 | — | [[Terminology]] | Master glossary (the hub) | 📖 |
@@ -114,8 +123,10 @@ Everything cross-links through [[Terminology]]. Open **Graph view** (`Ctrl+G`) t
 ## 🎮 Extras
 
 - **🗡️ [Shell Quest](https://github.com/iceteps/shell-quest)** — learn by *typing the real commands* in a
-  simulated terminal. 7 missions with XP and levels; missions 4 and 7 mirror the course's
-  **actual graded assignments** (Docker Hub push · merge-conflict resolution).
+  simulated terminal. **15 missions covering EVERY course topic** (Docker, Git, Kubernetes, Helm,
+  GitOps, Ansible, Terraform, RabbitMQ) with XP and levels; missions 4, 7, 8 and 10 mirror the
+  course's **actual graded assignments**. New: type `demo` inside any mission to watch it
+  solved step-by-step with real command output — then `takeover` and finish it yourself.
   ```bash
   git clone https://github.com/iceteps/shell-quest && cd shell-quest
   python quest.py

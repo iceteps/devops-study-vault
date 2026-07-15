@@ -66,6 +66,16 @@ Without this plugin they're just text. With it, you get real spaced-repetition r
 
 ---
 
+## 2.5 🎨 Install the CSS snippet (styles the cheat-sheets & decks)
+
+The vault ships a stylesheet that makes the `[!cheatsheet]` boxes flash when you peek
+and styles the collapsed review decks. One-time setup:
+
+1. Copy `setup/cheatsheet-flash.css` (in this folder) into `<your-vault>/.obsidian/snippets/`.
+2. Obsidian → **Settings → Appearance → CSS snippets** → refresh → toggle `cheatsheet-flash` **on**.
+
+Skip it and everything still works — just plainer.
+
 ## 3. 📖 Callouts & collapsible answers — *built in, no plugin*
 
 The colored boxes (`> [!tip]`, `> [!warning]`) and the **collapsible quiz answers**
@@ -101,14 +111,17 @@ to tick it as you complete each drill. Your progress saves in the note.
 > [!tip] Suggested rhythm per class note
 > 1. Read **TL;DR → Big idea → Core concepts**.
 > 2. Do the **Guided walkthrough** on your machine.
-> 3. Attempt the **Drills** (earn the XP) — *don't* open the cheat-sheet yet.
-> 4. Take the **Self-check quiz** (reveal answers only after guessing).
-> 5. Review the **Flashcards** (and again in a few days — that's the spaced repetition).
-> 6. Stuck on a command? *Now* open the collapsed **💻 Cheat-sheet** at the bottom.
+> 3. Beat the topic's [Shell Quest](https://github.com/iceteps/shell-quest) mission — brand-new topic? type `demo` inside the mission to *watch* it solved once, then play it for real.
+> 4. Attempt the **Drills** (earn the XP) — *don't* open the cheat-sheet yet.
+> 5. Take the **Self-check quiz** (reveal answers only after guessing).
+> 6. Review the **Flashcards** (and again in a few days — that's the spaced repetition).
+> 7. Stuck on a command? *Now* open the collapsed **💻 Cheat-sheet** at the bottom.
+> 8. Tick your progress in [[🎓 Mastery Path]] — it's the dashboard that decides what's next.
 
 ---
 
 ## 🔗 Where to go next
+- 🎓 [[🎓 Mastery Path]] — **your daily home page**: rank ladders per topic + what to do next
 - 🗺️ [[DevOps Experts — MOC]] — the map of every note + suggested learning path
 - 📖 [[Terminology]] — the master glossary (everything links here)
 - 🧭 [[DevOps Foundations]] — start here conceptually if DevOps is new to you

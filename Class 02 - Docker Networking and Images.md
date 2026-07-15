@@ -142,6 +142,15 @@ Hello! I am a Flask application
 - [ ] **(20 XP) Cache experiment:** build the Flask image, then edit **`app.py`** and rebuild — watch which steps say `CACHED`. Then edit **`requirements.txt`** and rebuild. **Done when:** you can explain why editing code kept `pip install` cached but editing requirements did not.
 - [ ] **(20 XP) slim vs full:** build one image `FROM python:3` and one `FROM python:3-slim`, run `docker images`, compare the `SIZE` column. **Done when:** you can state the roughly ~5–7× size difference.
 
+## 🧗 Extra credit — beyond class *(addition)*
+
+> [!example] 🆕 These drills are an **addition** — not covered in the class materials
+> They're the next skill up from what class taught, chosen because you'll meet them in real work (and in the [[SkyWatch Capstone]]). Higher XP, higher payoff.
+
+- [ ] **Multi-stage build (30 XP)** — class built a single-stage image. Rewrite the Flask Dockerfile with two stages: a `builder` stage that pip-installs into a venv, and a slim final stage that only `COPY --from=builder` the venv. Compare sizes. **Done when:** the final image is smaller and still serves.
+- [ ] **HEALTHCHECK (20 XP)** — add `HEALTHCHECK CMD python -c "import urllib.request;urllib.request.urlopen('http://localhost:8080')"` to the Dockerfile; watch `docker ps` flip to `(healthy)`. **Done when:** you can explain who consumes health status (hint: Compose `depends_on: condition`).
+- [ ] **Ship it (25 XP)** — create a free Docker Hub account, `docker tag` your image `yourname/my-flask-app:v1`, `docker push` it, then pull+run it on the other side (delete local first). **Done when:** your image runs from the registry, not the local cache.
+
 ## 🖥️ From the class deck *(addition — mined from `Class2.Docker.pptx`)*
 
 > [!info] Three things the slides stress that are easy to miss
@@ -167,15 +176,6 @@ Hello! I am a Flask application
 
 > [!success] ✅ Status — submitted 2026-07-15
 > Local project: `C:\Users\icete\github\Devops\docker-basics-assignment1` (stdlib-only `app.py`, hand-written `Dockerfile` — separate from the unrelated Flask catch-up practice in `devops-course/homework/class2`). Built, ran, verified on port 8080, pushed as [`iceteps/hello-docker-app`](https://hub.docker.com/r/iceteps/hello-docker-app) with tags `1.0` and `latest` (bonus). Confirmed public via the Docker Hub API.
-
-## 🧗 Extra credit — beyond class *(addition)*
-
-> [!example] 🆕 These drills are an **addition** — not covered in the class materials
-> They're the next skill up from what class taught, chosen because you'll meet them in real work (and in the [[SkyWatch Capstone]]). Higher XP, higher payoff.
-
-- [ ] **Multi-stage build (30 XP)** — class built a single-stage image. Rewrite the Flask Dockerfile with two stages: a `builder` stage that pip-installs into a venv, and a slim final stage that only `COPY --from=builder` the venv. Compare sizes. **Done when:** the final image is smaller and still serves.
-- [ ] **HEALTHCHECK (20 XP)** — add `HEALTHCHECK CMD python -c "import urllib.request;urllib.request.urlopen('http://localhost:8080')"` to the Dockerfile; watch `docker ps` flip to `(healthy)`. **Done when:** you can explain who consumes health status (hint: Compose `depends_on: condition`).
-- [ ] **Ship it (25 XP)** — create a free Docker Hub account, `docker tag` your image `yourname/my-flask-app:v1`, `docker push` it, then pull+run it on the other side (delete local first). **Done when:** your image runs from the registry, not the local cache.
 
 ## 🔎 Learn to fish — find it yourself (don't just copy)
 
@@ -228,80 +228,80 @@ docker run --help        # find the -p / --network flags
 > [!tip] Two ways to study these
 > **Flip a card:** click any ❓ below to reveal the answer. **Spaced repetition:** click the 🃏 ribbon icon (or `Ctrl+P → Spaced Repetition: Review flashcards`) and review the **devops** deck — the collapsed deck at the bottom feeds it.
 
-> [!question]- - User-defined network
+> [!question]- User-defined network
 > A network you create with `docker network create`; provides automatic DNS so containers reach each other by name.
 
-> [!question]- - Default bridge network
+> [!question]- Default bridge network
 > Docker's out-of-the-box network — connectivity works, but **no** name-based DNS resolution between containers.
 
-> [!question]- - `docker network create`
+> [!question]- `docker network create`
 > Command that makes a user-defined network with embedded DNS.
 
-> [!question]- - `--network <name>`
+> [!question]- `--network <name>`
 > `docker run` flag that attaches a container to a specific network.
 
-> [!question]- - `docker exec -it <c> sh`
+> [!question]- `docker exec -it <c> sh`
 > Open an interactive shell inside a running container.
 
-> [!question]- - Image
+> [!question]- Image
 > Read-only template built from a Dockerfile; you `run` it to create containers.
 
-> [!question]- - Dockerfile
+> [!question]- Dockerfile
 > Text recipe of instructions that Docker builds into an image.
 
-> [!question]- - `FROM`
+> [!question]- `FROM`
 > Sets the base image the build starts from.
 
-> [!question]- - `WORKDIR`
+> [!question]- `WORKDIR`
 > Sets the working directory for later instructions and the running container.
 
-> [!question]- - `COPY`
+> [!question]- `COPY`
 > Copies files from build context into the image.
 
-> [!question]- - `RUN`
+> [!question]- `RUN`
 > Executes a command at **build time** and bakes the result into a layer.
 
-> [!question]- - `EXPOSE`
+> [!question]- `EXPOSE`
 > Documents which port the app listens on (metadata only — does not publish).
 
-> [!question]- - `CMD`
+> [!question]- `CMD`
 > The default command run when the container **starts**.
 
-> [!question]- - Layer
+> [!question]- Layer
 > A cached filesystem diff per Dockerfile instruction; unchanged ones are reused.
 
-> [!question]- - Layer caching
+> [!question]- Layer caching
 > Reusing unchanged layers to skip work — order deps before code to exploit it.
 
-> [!question]- - `-p HOST:CONTAINER`
+> [!question]- `-p HOST:CONTAINER`
 > Publishes a container port to a host port (left=host, right=container).
 
-> [!question]- - `docker build -t name .`
+> [!question]- `docker build -t name .`
 > Builds an image from the Dockerfile in `.` and tags it `name`.
 
-> [!question]- - slim/alpine base
+> [!question]- slim/alpine base
 > Much smaller base image variants → faster pulls, smaller attack surface.
 
 > [!srdeck]- 🔁 Raw review deck — the plugin reads this (collapsed on purpose; looks like text by design)
 > #flashcards/devops
-> - User-defined network::A network you create with `docker network create`; provides automatic DNS so containers reach each other by name.
-> - Default bridge network::Docker's out-of-the-box network — connectivity works, but **no** name-based DNS resolution between containers.
-> - `docker network create`::Command that makes a user-defined network with embedded DNS.
-> - `--network <name>`::`docker run` flag that attaches a container to a specific network.
-> - `docker exec -it <c> sh`::Open an interactive shell inside a running container.
-> - Image::Read-only template built from a Dockerfile; you `run` it to create containers.
-> - Dockerfile::Text recipe of instructions that Docker builds into an image.
-> - `FROM`::Sets the base image the build starts from.
-> - `WORKDIR`::Sets the working directory for later instructions and the running container.
-> - `COPY`::Copies files from build context into the image.
-> - `RUN`::Executes a command at **build time** and bakes the result into a layer.
-> - `EXPOSE`::Documents which port the app listens on (metadata only — does not publish).
-> - `CMD`::The default command run when the container **starts**.
-> - Layer::A cached filesystem diff per Dockerfile instruction; unchanged ones are reused.
-> - Layer caching::Reusing unchanged layers to skip work — order deps before code to exploit it.
-> - `-p HOST:CONTAINER`::Publishes a container port to a host port (left=host, right=container).
-> - `docker build -t name .`::Builds an image from the Dockerfile in `.` and tags it `name`.
-> - slim/alpine base::Much smaller base image variants → faster pulls, smaller attack surface.
+> User-defined network::A network you create with `docker network create`; provides automatic DNS so containers reach each other by name.
+> Default bridge network::Docker's out-of-the-box network — connectivity works, but **no** name-based DNS resolution between containers.
+> `docker network create`::Command that makes a user-defined network with embedded DNS.
+> `--network <name>`::`docker run` flag that attaches a container to a specific network.
+> `docker exec -it <c> sh`::Open an interactive shell inside a running container.
+> Image::Read-only template built from a Dockerfile; you `run` it to create containers.
+> Dockerfile::Text recipe of instructions that Docker builds into an image.
+> `FROM`::Sets the base image the build starts from.
+> `WORKDIR`::Sets the working directory for later instructions and the running container.
+> `COPY`::Copies files from build context into the image.
+> `RUN`::Executes a command at **build time** and bakes the result into a layer.
+> `EXPOSE`::Documents which port the app listens on (metadata only — does not publish).
+> `CMD`::The default command run when the container **starts**.
+> Layer::A cached filesystem diff per Dockerfile instruction; unchanged ones are reused.
+> Layer caching::Reusing unchanged layers to skip work — order deps before code to exploit it.
+> `-p HOST:CONTAINER`::Publishes a container port to a host port (left=host, right=container).
+> `docker build -t name .`::Builds an image from the Dockerfile in `.` and tags it `name`.
+> slim/alpine base::Much smaller base image variants → faster pulls, smaller attack surface.
 
 ## ⚠️ Gotchas
 
